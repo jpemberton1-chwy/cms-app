@@ -8,7 +8,7 @@ resource "digitalocean_project_resources" "app_resources" {
 	project = digitalocean_project.app.id
 
 	resources = [
-		# digitalocean_database_cluster.db-cluster.id,
+		# digitalocean_database_cluster.db-cluster.urn,
 		digitalocean_droplet.app.urn,
 		digitalocean_loadbalancer.alb.urn,
 	]

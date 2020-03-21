@@ -1,15 +1,11 @@
 resource "digitalocean_certificate" "cert" {
-	name = "cert"
+	name = "alb"
 	type = "lets_encrypt"
 	domains = ["rocketcms.dev"]
 }
 
-resource "digitalocean_domain" "www" {
-	name = "rocketcms.dev"
-}
-
 resource "digitalocean_record" "app_record" {
-	domain = digitalocean_domain.www.name
+	domain = "rocketcms.dev"
 	type = "A"
 	name = var.app_release == "master" ? "www" : "www-${var.app_release}"
 	value = digitalocean_loadbalancer.alb.ip
@@ -33,7 +29,7 @@ resource "digitalocean_loadbalancer" "alb" {
 	healthcheck {
 		port = 8000
 		protocol = "http"
-		path = "/"
+		path = "/health"
 	}
 
 	droplet_ids = [digitalocean_droplet.app.id]
