@@ -1,7 +1,7 @@
 variable "do_token" {}
-variable "pub_key" {}
-variable "pvt_key" {}
-variable "ssh_fingerprint" {}
+variable "db_cluster_count" {
+	default = 1
+}
 
 provider "digitalocean" {
 	token = var.do_token
