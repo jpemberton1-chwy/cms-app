@@ -1,7 +1,9 @@
 variable "do_token" {}
-variable "www_release" {
+
+variable "app_release" {
 	default = "master"
 }
+
 variable "db_cluster_count" {
 	default = 1
 }

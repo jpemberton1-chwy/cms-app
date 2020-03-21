@@ -1,7 +1,12 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-http.createServer((req, res) => {
-	res.writeHead(200, { 'Content-Type': 'text/plain' });
-	res.end('OK');
-}).listen(80);
+app.get('/health', (req, res) => {
+	res.sendStatus(200);
+});
 
+app.get('/', (req, res) => {
+	res.send('OK');
+});
+
+app.listen(8000);
