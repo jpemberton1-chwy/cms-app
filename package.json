@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "tf:init": "terraform init ./terraform",
+    "tf:apply": "terraform apply --var \"do_token=${DO_PAT}\" --var \"pub_key=$HOME/.ssh/tf_rsa.pub\" --var \"pvt_key=$HOME/.ssh/tf_rsa\" --var \"ssh_fingerprint=$SSH_FINGERPRINT\" ./terraform",
+    "tf:plan": "terraform plan --var \"do_token=${DO_PAT}\" --var \"pub_key=$HOME/.ssh/tf_rsa.pub\" --var \"pvt_key=$HOME/.ssh/tf_rsa\" --var \"ssh_fingerprint=$SSH_FINGERPRINT\" ./terraform",
+    "tf:destroy": "terraform destroy --var \"do_token=${DO_PAT}\" --var \"pub_key=$HOME/.ssh/tf_rsa.pub\" --var \"pvt_key=$HOME/.ssh/tf_rsa\" --var \"ssh_fingerprint=$SSH_FINGERPRINT\" ./terraform"
+  },
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
+}
